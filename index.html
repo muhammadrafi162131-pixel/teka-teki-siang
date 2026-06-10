@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teka-Teki Silang - Sejarah Pendudukan Jepang di Indonesia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Teka-Teki Silang</h1>
+            <p class="subtitle">Sejarah Pendudukan Jepang di Indonesia (1942-1945)</p>
+        </header>
+
+        <main>
+            <div class="info-section">
+                <p>Selesaikan teka-teki silang dengan menjawab pertanyaan berkaitan dengan sejarah pendudukan Jepang di Indonesia. Klik pada kotak untuk mulai menjawab!</p>
+            </div>
+
+            <div class="content-wrapper">
+                <!-- Crossword Grid -->
+                <div class="crossword-section">
+                    <div class="crossword-grid" id="crosswordGrid"></div>
+                </div>
+
+                <!-- Clues Section -->
+                <div class="clues-section">
+                    <div class="clues-container">
+                        <div class="clues-column">
+                            <h3>📌 MENDATAR</h3>
+                            <div id="acrossClues" class="clues-list"></div>
+                        </div>
+                        <div class="clues-column">
+                            <h3>📌 MENURUN</h3>
+                            <div id="downClues" class="clues-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="controls">
+                <button id="checkBtn" class="btn btn-primary">✓ Periksa Jawaban</button>
+                <button id="hintBtn" class="btn btn-secondary">💡 Petunjuk</button>
+                <button id="resetBtn" class="btn btn-reset">🔄 Ulang</button>
+            </div>
+
+            <!-- Feedback Section -->
+            <div id="feedback" class="feedback"></div>
+
+            <!-- Score Section -->
+            <div class="score-section">
+                <p>Benar: <span id="correctCount">0</span> | Salah: <span id="wrongCount">0</span></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Teka-Teki Silang Sejarah. Ciptakan pemahaman sejarah melalui cara yang menyenangkan!</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

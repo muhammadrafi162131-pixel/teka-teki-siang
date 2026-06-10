@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --light-bg: #ecf0f1;
+    --white: #ffffff;
+    --border-color: #bdc3c7;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* Main Content */
+main {
+    padding: 40px 20px;
+}
+
+.info-section {
+    background: #e8f4f8;
+    border-left: 5px solid var(--secondary-color);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    font-size: 1.05em;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* Crossword Grid */
+.crossword-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.crossword-grid {
+    display: inline-grid;
+    gap: 0;
+    background: var(--primary-color);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover {
+    background: #f9f9f9;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.cell.black {
+    background: var(--primary-color);
+    cursor: default;
+    border: 1px solid var(--primary-color);
+}
+
+.cell input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.cell input:focus {
+    outline: none;
+    background: #fff3cd;
+}
+
+.cell.correct input {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+.cell.incorrect input {
+    background: #f8d7da;
+    color: var(--secondary-color);
+}
+
+.cell.active input {
+    background: #cfe9f3;
+}
+
+.cell-number {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    background: var(--white);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+/* Clues Section */
+.clues-section {
+    background: var(--light-bg);
+    padding: 20px;
+    border-radius: 8px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.clues-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.clues-column h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    border-bottom: 3px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.clues-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.clue {
+    background: var(--white);
+    padding: 12px;
+    border-radius: 5px;
+    border-left: 4px solid var(--secondary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clue:hover {
+    background: #f0f0f0;
+    transform: translateX(5px);
+}
+
+.clue.active {
+    background: #cfe9f3;
+    border-left-color: var(--warning-color);
+}
+
+.clue-number {
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-right: 8px;
+}
+
+.clue-text {
+    font-size: 0.95em;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--success-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.btn-secondary {
+    background: var(--warning-color);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+}
+
+.btn-reset {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-reset:hover {
+    background: #1a252f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+}
+
+/* Feedback */
+.feedback {
+    min-height: 50px;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+.feedback.success {
+    display: block;
+    background: #d4edda;
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.feedback.error {
+    display: block;
+    background: #f8d7da;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.feedback.hint {
+    display: block;
+    background: #fff3cd;
+    color: var(--warning-color);
+    border: 1px solid var(--warning-color);
+}
+
+/* Score Section */
+.score-section {
+    text-align: center;
+    padding: 20px;
+    background: var(--light-bg);
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+#correctCount {
+    color: var(--success-color);
+    font-size: 1.3em;
+}
+
+#wrongCount {
+    color: var(--secondary-color);
+    font-size: 1.3em;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .cell {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    .cell {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .clues-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        border-radius: 0;
+    }
+
+    header {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .cell {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .cell-number {
+        width: 12px;
+        height: 12px;
+        font-size: 8px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .content-wrapper {
+        gap: 20px;
+    }
+}
